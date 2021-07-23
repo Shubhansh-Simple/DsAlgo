@@ -19,3 +19,6 @@ for each_item in given_list:
 
 print('Numbers whose summation is less than 7 - ',final_list)
 
+# Big O of this algorithm is O(n^2) 
+# which is very bad yo.
+
