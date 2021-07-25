@@ -1,0 +1,32 @@
+'''
+Finding the max occurence character
+in the given string.
+'''
+
+sentence = 'I am good what about you ?'
+string_counter = {}
+
+def maxOccurence( string ):
+    for x in string:
+        try:
+            string_counter[x] += 1
+        except KeyError:
+            if not x == ' ':
+                string_counter[x] = 1
+    return string_counter
+
+keyCounter,valueCounter = '',0
+
+'''
+For finding maximum value
+because dictionary don't maintain the sequence
+'''
+for key,value in (maxOccurence(sentence)).items():
+    if valueCounter < value:
+        keyCounter,valueCounter = key,value
+
+print('{}:{}'.format(keyCounter,valueCounter) )
+
+
+
+

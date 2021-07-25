@@ -1,0 +1,43 @@
+How do you reverse a given string in place? 
+
+How do you print duplicate characters from a string? 
+
+How do you check if two strings are anagrams of each other? 
+
+How do you find all the permutations of a string? 
+
+How can a given string be reversed using recursion? 
+
+How do you check if a string contains only digits? 
+
+How do you find duplicate characters in a given string? 
+
+How do you count a number of vowels and consonants in a given string? 
+
+How do you count the occurrence of a given character in a string? 
+
+How do you print the first non-repeated character from a string? 
+
+How do you convert a given String into int like the atoi()? 
+
+How do you reverse words in a given sentence without using any library method? 
+
+How do you check if two strings are a rotation of each other? 
+
+How do you check if a given string is a palindrome? 
+
+How do you find the length of the longest substring without repeating characters? 
+
+Given string str, How do you find the longest palindromic substring in str? 
+
+How to convert a byte array to String? 
+
+how to remove the duplicate character from String? 
+
+How to find the maximum occurring character in given String? 
+
+How do you remove a given character from String? 
+
+Given an array of strings, find the most frequent word in a given array, I mean, the string that appears the most in the  array.    
+
+ In the case of a tie, the string that is the smallest (lexicographically) is printed. 
