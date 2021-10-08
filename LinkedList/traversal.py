@@ -51,6 +51,22 @@ class LinkedList:
 
         del temporary_head
         return temporary_list
+
+
+    ##########
+    # LENGTH #
+    ##########
+    def length(self):
+        '''Returns the length of the linked list'''
+
+        temporary_head = self.head
+        counter = 0
+
+        while temporary_head:
+            counter += 1
+            temporary_head = temporary_head.next
+            
+        return counter
         
 
     #############
@@ -101,9 +117,43 @@ class LinkedList:
         raise ValueError('Vale {} does not exist in list.'.format(val) )
 
 
-    def insert(self,val):
+    #############
+    # INSERTION #
+    #############
+    def insert(self,node,location):
         '''Insert node in linked list'''
-        pass
+
+        # head
+        if location == 0:
+            node.next, self.head = self.head, node
+            return None
+
+        # tail
+        elif location == 1:
+            self.tail.next, self.node = node,node
+            return None
+
+        # anywhere inside the node
+        else:
+            temporary_head    = self.head
+            counter, location = 0, location-1
+            previous_node = self.head
+
+            while temporary_head:
+
+                if counter == location:
+                    # we want to insert our value right here
+                    # all we need is just little bit planning 
+                    # that's it.
+                    node.next, previous_node.next = temporary_head, node
+                    return None
+
+
+                previous_node  = temporary_head
+                temporary_head = temporary_head.next
+                counter += 1
+
+            return None
 
 
 n1 = Node(4)
@@ -111,6 +161,8 @@ n2 = Node(5)
 n3 = Node(8)
 n4 = Node(11)
 n5 = Node(12)
+
+n6 = Node(100)
 
 ll = LinkedList()
 ll.head = n1
@@ -124,12 +176,23 @@ ll.tail = n5
 
 
 ll.showOff( ll.show() )
+'''
 ll.reverse()
 print('-----------------Reverse-----------------------')
 ll.showOff( ll.show() )
 
-
+print('Length - ',ll.length() )
 remove_value = int( input('Type the value you want to remove - ') )
 ll.remove(remove_value)
+print('---------------Remove {} ---------------------'.format(remove_value))
 ll.showOff( ll.show() )
+'''
+
+print('Length - ',ll.length() )
+
+ll.insert(n6,5)
+print('---------------Insert n6 ---------------------')
+ll.showOff( ll.show() )
+print('Length - ',ll.length() )
+
 
