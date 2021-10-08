@@ -4,6 +4,8 @@ done in this file
 
 Traversal
 Reverse
+Deletion
+Insertion
 Showoff 2->3->4->5->None
 '''
 
@@ -43,13 +45,11 @@ class LinkedList:
         temporary_head = self.head
         temporary_list = []
 
-        while temporary_head.next:
+        while temporary_head:
             temporary_list.append( temporary_head.value )
             temporary_head = temporary_head.next
 
-        temporary_list.append( temporary_head.value )
         del temporary_head
-       
         return temporary_list
         
 
@@ -61,9 +61,7 @@ class LinkedList:
 
         temporary_head = self.head  # head means entire linked list
 
-        #self.head.value, self.tail.value = self.tail.value, self.head.value
-
-        for x in self.show()[::-1]:
+        for x in self.show()[::-1]:  # <--just remove the list right here
 
             temporary_head.value = x
             temporary_head = temporary_head.next
@@ -72,41 +70,40 @@ class LinkedList:
 
 
     ##############
-    # DELETITION #
+    # DELETION #
     ##############
-    def remove( self, val ):
+    def remove( self, val):
         '''It's delete the value from singly linked list'''
-        
-        temporary_head = self.head
-
+    
+        # SPECIALLY FOR HEAD
         if self.head.value == val:
             self.head = self.head.next
             return None
 
+        temporary_head = self.head
         previous_value = None
-        while temporary_head.next:
-            
-            if temporary_head.value == val:
-                previous_value.next = temporary_head.next
 
-                # finally return None
+        while temporary_head:
+            # Way to iterate from the linked list
+            
+            if val == temporary_head.value:
+                previous_value.next = temporary_head.next
+                
+                # SPEICALLY FOR TAIL
+                if temporary_head == self.tail:
+                    self.tail = previous_value
+
                 return None
 
-            # last value
             previous_value = temporary_head
-            
-            # for moving forward
             temporary_head = temporary_head.next
 
-            # for the last value if temporary_head.value == val:
-            # change the last element
-            previous_value.next = None
-            self.tail = previous_value
+        raise ValueError('Vale {} does not exist in list.'.format(val) )
 
-            return None
 
-        raise ValueError('{} does exist in linked list'.format(val))
-
+    def insert(self,val):
+        '''Insert node in linked list'''
+        pass
 
 
 n1 = Node(4)
@@ -114,7 +111,6 @@ n2 = Node(5)
 n3 = Node(8)
 n4 = Node(11)
 n5 = Node(12)
-
 
 ll = LinkedList()
 ll.head = n1
@@ -126,6 +122,7 @@ n4.next = n5
 
 ll.tail = n5
 
+
 ll.showOff( ll.show() )
 ll.reverse()
 print('-----------------Reverse-----------------------')
@@ -135,5 +132,4 @@ ll.showOff( ll.show() )
 remove_value = int( input('Type the value you want to remove - ') )
 ll.remove(remove_value)
 ll.showOff( ll.show() )
-
 
