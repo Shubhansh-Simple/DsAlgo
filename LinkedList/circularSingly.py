@@ -184,9 +184,11 @@ class CircularSingly:
                 self.tail.next = self.head
                 return None
 
+            # TAIL
             elif location == 1:
                 node.next = self.head
-                self.tail = node
+                self.tail.next, self.tail = node, node
+
                 return None
 
         # ANYWHERE IN LIST
