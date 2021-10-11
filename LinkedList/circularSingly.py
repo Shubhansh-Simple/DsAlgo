@@ -6,6 +6,7 @@ Same thing what we done with the singly linked list
 LENGTH
 SHOW OFF
 TRAVERSAL
+REVERSE
 SEARCH
 DELETION
 INSERTION
@@ -226,6 +227,44 @@ class CircularSingly:
                     counter += 1
 
                 # tail is missing yeah man
+                
+    def reverse(self):
+        '''Reverse the CIRCULAR-SINGLY linked list'''
+       
+        # EMPTY LIST
+        if not self.head:
+            return None
+
+        # SINGLE NODE LIST
+        elif self.head == self.head.next:
+            return None
+
+        # MORE THAN ONE NODE
+        else:
+            reversed_node_values, i = self.traversal()[::-1], 0
+            temporary_head          = self.head
+
+            while i < len(reversed_node_values):
+               
+                # reversing
+                temporary_head.value = reversed_node_values[i]
+
+                # HEAD
+                if i == 0:
+                    self.head      = temporary_head
+                    self.tail.next = self.head
+
+                # TAIL
+                elif i == len(reversed_node_values)-1:
+
+                    self.tail      = temporary_head
+                    self.tail.next = self.head
+
+
+                temporary_head = temporary_head.next
+                i += 1
+
+
 
 
 
@@ -254,6 +293,8 @@ print('Length -',ll.length() )
 
 # FOR SEARCH
 #print( 'Match found - ',ll.search(9) )
+
+# REVERSE method also added
 
 '''
 print()
