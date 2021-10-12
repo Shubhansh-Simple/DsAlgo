@@ -7,6 +7,7 @@ Reverse
 Deletion
 Insertion
 Showoff 2->3->4->5->None
+MEMOIZATION
 '''
 
 class Node:
@@ -123,6 +124,8 @@ class LinkedList:
     def insert(self,node,location):
         '''Insert node in linked list'''
 
+        node = Node( node )
+
         # head
         if location == 0:
             node.next, self.head = self.head, node
@@ -154,6 +157,43 @@ class LinkedList:
                 counter += 1
 
             return None
+  
+    ###########################################
+    # MEMOIZATION for starting location point #
+    ###########################################
+    def memoization( self, location ):
+        '''Reverse the linked list from location to end by using a bookmark'''
+         
+
+
+        temporary_head        = self.head
+        bookmark_initial_node = None       # <-- this create a bookmark
+        counter = 1
+        is_reached = False
+        node_values_list = []
+
+        while temporary_head:
+
+            
+            if counter == location:
+                # we don't iterate from head for reaching this point
+                bookmark_initial_node = temporary_head
+                is_reached = True
+            
+            # collect node's value till end
+            if is_reached:
+                node_values_list.append(temporary_head.value)
+
+            temporary_head = temporary_head.next
+            counter += 1
+        
+        node_values_list.reverse()
+
+        # directly we used the bookmark
+        # without starting from head
+        for x in node_values_list:
+            bookmark_initial_node.value = x
+            bookmark_initial_node = bookmark_initial_node.next
 
 
 n1 = Node(4)
@@ -175,7 +215,7 @@ n4.next = n5
 ll.tail = n5
 
 
-ll.showOff( ll.show() )
+#ll.showOff( ll.show() )
 '''
 ll.reverse()
 print('-----------------Reverse-----------------------')
@@ -186,13 +226,23 @@ remove_value = int( input('Type the value you want to remove - ') )
 ll.remove(remove_value)
 print('---------------Remove {} ---------------------'.format(remove_value))
 ll.showOff( ll.show() )
-'''
 
 print('Length - ',ll.length() )
 
-ll.insert(n6,5)
 print('---------------Insert n6 ---------------------')
 ll.showOff( ll.show() )
 print('Length - ',ll.length() )
+'''
 
+
+ll.insert(100,0)
+ll.insert(200,0)
+ll.insert(300,0)
+ll.insert(400,0)
+
+ll.showOff( ll.show() )
+print('-'*40)
+ll.memoization(8)
+
+ll.showOff( ll.show() )
 
