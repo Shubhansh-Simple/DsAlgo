@@ -32,7 +32,7 @@ PS1+="${username_color}\u"; # \u=Username
 PS1+="${at_color}@";
 PS1+="${host_color}\h" #\h=Host
 PS1+="${etc_color}]-[";
-PS1+="${directory_color}\w"; # \w=Working directory
+PS1+="${directory_color}\W"; # \w=Working directory  and \W= End directory of current working directory
 PS1+="${etc_color}]\n└──╼ "; # \n=New Line
 PS1+="${symbol}${reset}";
 PS1+=" ";
