@@ -4,6 +4,9 @@ Finding the second largest element in given array
 Bubble Sort Approach
 Minimum DIFFERENCE from max element approach
 In-built Sorting approach
+
+Same way we can find the second smallest too.
+In these technique we can find the second largest/smallest without going to O(n^2) time complexity
 '''
 
 
